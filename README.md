@@ -238,3 +238,138 @@ FIKA doesn’t just react — it **predicts risks**.
 ---
 
 ## 🏗️ System Architecture
+
+
+---
+
+## 📅 Development Plan
+
+### Week 1
+- Research  
+- Architecture  
+- UI Prototype  
+
+### Week 2
+- Trigger system  
+- Subscription  
+- AI prototype  
+
+---
+
+## 🔐 Adversarial Defense & Anti-Spoofing Strategy
+
+### 🚨 Problem
+Fraudsters exploit:
+- Fake GPS  
+- Multiple accounts  
+- Coordinated attacks  
+
+👉 Result: Massive fake payouts  
+
+---
+
+### 🛡️ Defense System
+
+#### 1. Multi-Signal Location Verification
+- GPS  
+- IP location  
+- Cell tower  
+- Device sensors  
+
+➡️ Mismatch = Suspicious  
+
+---
+
+#### 2. Behavioral Analysis
+Tracks:
+- Work hours  
+- Movement  
+- Patterns  
+
+➡️ Sudden abnormal change = Flagged  
+
+---
+
+#### 3. Activity Cross-Validation
+- Claimed work vs actual activity  
+
+---
+
+#### 4. Device Fingerprinting
+Detects:
+- Multiple accounts per device  
+- Device switching  
+
+---
+
+#### 5. Fraud Ring Detection
+Identifies:
+- Clustered fake activity  
+- Same timing patterns  
+
+---
+
+#### 6. AI Fraud Risk Score
+
+| Score | Meaning |
+|------|--------|
+| 0.0  | Safe   |
+| 1.0  | Fraud  |
+
+---
+
+#### 7. Fairness System
+
+| Risk Level | Action        |
+|-----------|-------------|
+| Low       | Full payout  |
+| Medium    | Partial payout |
+| High      | Review       |
+
+---
+
+#### 8. Secure Payout Control
+Before payout:
+- Location verified  
+- Behavior validated  
+- Risk score checked  
+
+---
+
+### 💪 Why This is Powerful
+- Prevents fake GPS fraud  
+- Detects coordinated attacks  
+- Protects insurance pool  
+- Ensures fairness  
+
+---
+
+## 🔮 Future Scope
+- Health insurance  
+- Accident coverage  
+- Platform integrations  
+- Global scaling  
+
+---
+
+## 📂 Repository Structure
+FIKA/
+│── README.md
+│── docs/
+│── backend/
+│── frontend/
+│── ml_models/
+│── prototype/
+
+
+---
+
+## 🎥 Demo Video
+📌 *FIKA: Automated Climate Risk Insurance for Delivery Workers | Guidewire Hackathon 2026*
+
+---
+
+## 🏁 Conclusion
+FIKA is not just an insurance platform.
+
+It is a **secure, AI-powered financial protection system** built for the future of the gig economy.
