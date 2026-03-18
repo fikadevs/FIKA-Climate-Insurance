@@ -1,0 +1,16 @@
+{
+  "workers": [
+    {
+      "id": 1,
+      "name": "Rahul",
+      "zone": "Zone A",
+      "weeklyIncome": 6000,
+      "currentIncome": 3000
+    }
+  ],
+  "triggers": {
+    "rainfall": 95,
+    "threshold": 80
+  },
+  "payouts": []
+}
