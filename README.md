@@ -366,6 +366,7 @@ FIKA/
 
 ## 🎥 Demo Video
 📌 *FIKA: Automated Climate Risk Insurance for Delivery Workers | Guidewire Hackathon 2026*
+(https://www.youtube.com/watch?v=XmlRZOXNtm0)
 
 ---
 
