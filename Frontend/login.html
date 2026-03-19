@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIKA Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="login-body">
+    <main class="login-container">
+        <div class="login-header">
+            <img src="assets/images/main black.svg" alt="FIKA" class="logo-large-img">
+            <p style="color: grey;">Climate Protection for Gig Workers</p>
+        </div>
+
+        <div class="card login-card" id="step-phone">
+            <h2>Welcome Back</h2>
+            <p class="login-subtitle">Enter your registered phone number to continue.</p>
+            
+            <div class="input-group">
+                <span class="country-code">+91</span>
+                <input type="tel" id="phone-input" class="form-control" placeholder="Mobile Number" maxlength="10">
+            </div>
+
+            <button class="btn btn-primary" id="btn-send-otp" onclick="sendOTP()">Send OTP</button>
+        </div>
+
+        <div class="card login-card hidden" id="step-otp">
+            <h2>Verify Phone</h2>
+            <p class="login-subtitle">We sent a 4-digit code to <strong id="display-phone"></strong></p>
+            
+            <div class="otp-group">
+                <input type="number" class="otp-input" maxlength="1" oninput="moveToNext(this, 'otp2')">
+                <input type="number" id="otp2" class="otp-input" maxlength="1" oninput="moveToNext(this, 'otp3')">
+                <input type="number" id="otp3" class="otp-input" maxlength="1" oninput="moveToNext(this, 'otp4')">
+                <input type="number" id="otp4" class="otp-input" maxlength="1">
+            </div>
+
+            <button class="btn btn-primary" id="btn-verify" onclick="verifyOTP()">Verify & Login</button>
+            <button class="btn btn-text" onclick="goBackToPhone()">Edit Phone Number</button>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

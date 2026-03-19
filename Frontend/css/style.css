@@ -1,0 +1,467 @@
+.logo img{
+    height: 38px;
+    width: auto;     
+    display: block;  
+    object-fit: contain; 
+}
+
+:root {
+    --primary: #0D9488;
+    --primary-dark: #0F766E;
+    --bg-color: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --text-main: #1E293B;
+    --text-muted: #64748B;
+    
+    /* Alerts */
+    --safe: #10B981;
+    --safe-bg: #D1FAE5;
+    --warning: #F59E0B;
+    --warning-bg: #FEF3C7;
+    --critical: #EF4444;
+    --critical-bg: #FEE2E2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding-bottom: 80px; /* Space for bottom nav */
+}
+
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -1px;
+}
+
+.user-profile { font-size: 1.8rem; color: var(--text-muted); }
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+}
+
+/* Status Indicator */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.status-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+/* Weather Grid */
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.weather-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.weather-item i { font-size: 1.5rem; margin-bottom: 5px; }
+.weather-item .value { font-size: 1.2rem; font-weight: 700; }
+.weather-item .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+.alert-safe { background: var(--safe-bg); color: var(--safe); }
+.alert-moderate { background: var(--warning-bg); color: var(--warning); }
+.alert-critical { background: var(--critical-bg); color: var(--critical); }
+
+/* Buttons */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: 0.2s ease;
+    border: none;
+}
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-secondary { background: #E2E8F0; color: var(--text-main); }
+
+/* Bottom Nav */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: var(--card-bg);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    box-shadow: 0 -1px 3px rgba(0,0,0,0.05);
+    border-top: 1px solid #E2E8F0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    gap: 4px;
+}
+
+.nav-item i { font-size: 1.5rem; }
+.nav-item.active { color: var(--primary); }
+
+/* --- Additions for Subscribe & History Pages --- */
+
+/* Page Titles */
+.page-title { margin-bottom: 20px; }
+.page-title h1 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 5px; }
+.page-title p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* Wallet Summary */
+.wallet-summary { text-align: center; padding: 30px 20px; }
+.wallet-summary .balance {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 10px 0;
+}
+
+/* Transaction List */
+.transaction-list { display: flex; flex-direction: column; gap: 15px; }
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #E2E8F0;
+}
+.transaction-item:last-child { border-bottom: none; padding-bottom: 0; }
+.tx-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+.tx-details { flex-grow: 1; display: flex; flex-direction: column; }
+.tx-title { font-weight: 600; color: var(--text-main); font-size: 1rem; }
+.tx-date { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
+.tx-amount { font-weight: 700; color: var(--safe); font-size: 1.1rem; }
+
+/* Pricing Card */
+.pricing-card { border: 2px solid var(--primary); background: #F0FDFA; }
+.plan-header { text-align: center; margin-bottom: 20px; border-bottom: 1px solid #CCFBF1; padding-bottom: 20px;}
+.plan-header h2 { color: var(--primary-dark); font-size: 1.2rem; }
+.price { font-size: 2.5rem; font-weight: 800; color: var(--text-main); }
+.price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+
+.benefits-list { list-style: none; margin-bottom: 25px; }
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+.benefits-list i { color: var(--primary); font-size: 1.2rem; }
+.terms { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 10px; }
+
+
+/* --- Profile Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6); /* Dark semi-transparent background */
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligns to bottom for mobile feel */
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 24px 24px 0 0; /* Rounded top corners */
+    padding: 25px;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.hidden .modal-content {
+    transform: translateY(100%); /* Slides down when hidden */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 { font-size: 1.2rem; color: var(--text-main); }
+.close-btn { 
+    background: none; 
+    border: none; 
+    font-size: 1.5rem; 
+    color: var(--text-muted); 
+    cursor: pointer;
+}
+
+.profile-details {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.profile-avatar i {
+    font-size: 4rem;
+    color: var(--primary);
+}
+
+.profile-details h3 { font-size: 1.4rem; margin-top: 10px; color: var(--text-main); }
+.worker-id { color: var(--text-muted); font-size: 0.9rem; }
+
+.profile-info-list {
+    background: var(--bg-color);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #E2E8F0;
+}
+.info-row:last-child { border-bottom: none; }
+
+.info-label { color: var(--text-muted); font-size: 0.9rem; }
+.info-value { font-weight: 600; color: var(--text-main); font-size: 0.95rem; }
+
+.log-out-btn { color: var(--critical); background: var(--critical-bg); }
+
+/* --- Alerts Page Styles --- */
+
+/* Active Critical Alert */
+.active-alert {
+    background-color: var(--critical-bg);
+    border: 1px solid #FECACA;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.alert-header i { font-size: 1.8rem; color: var(--critical); }
+.alert-header h2 { margin: 0; color: var(--critical); font-size: 1.2rem; }
+
+.alert-body h3 { font-size: 1.1rem; margin-bottom: 5px; color: var(--text-main); }
+.alert-metric { font-size: 1.1rem; margin-bottom: 10px; color: var(--critical); }
+.alert-desc { font-size: 0.9rem; color: var(--text-main); margin-bottom: 15px; line-height: 1.5; }
+
+/* Dismiss Button */
+.btn-alert-dismiss {
+    background: #FFFFFF;
+    color: var(--critical);
+    border: 1px solid #FECACA;
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Status Badges for Log */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.badge-warning { background: var(--warning-bg); color: var(--warning); }
+.badge-safe { background: var(--safe-bg); color: var(--safe); }
+
+/* --- Login Page Styles --- */
+
+.login-body {
+    background-color: #f1f1f1f1; /* Deep Teal background for the login screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 20px; /* Override the 80px bottom padding from main layout */
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.logo-large {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+}
+
+.login-card {
+    padding: 30px 20px;
+}
+
+.login-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Forms & Inputs */
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    background: #F8FAFC;
+    transition: border-color 0.2s;
+}
+
+.input-group:focus-within {
+    border-color: var(--primary);
+}
+
+.country-code {
+    color: var(--text-muted);
+    font-weight: 600;
+    padding-right: 10px;
+    border-right: 1px solid #CBD5E1;
+}
+
+.form-control {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 10px;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-main);
+    outline: none;
+}
+
+/* OTP Inputs */
+.otp-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.otp-input {
+    width: 50px;
+    height: 55px;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: #F8FAFC;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.otp-input:focus {
+    border-color: var(--primary);
+}
+
+/* Remove arrows from number input */
+.otp-input::-webkit-outer-spin-button,
+.otp-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-text {
+    background: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Center and size the login page logo */
+.logo-large-img {
+    height: 80px;            /* Makes it nice and prominent */
+    width: auto;             /* Keeps the proportions correct */
+    display: block;          
+    margin: 0 auto 15px auto; /* Centers the image and adds space below it */
+    object-fit: contain;
+}

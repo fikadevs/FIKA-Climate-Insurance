@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIKA Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo"> <img src="assets/images/black.svg" alt="FIKA"></div>
+        <div class="user-profile">
+            <i class="ph ph-user-circle"></i> 
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card status-card active">
+            <h2>Coverage Status</h2>
+            <div class="status-indicator">
+                <i class="ph-fill ph-check-circle"></i>
+                <span>Active Protection</span>
+            </div>
+            <p>You are protected against extreme rain, heat, and AQI today.</p>
+        </section>
+
+        <section class="card weather-card">
+            <h2>Live Environment Risk</h2>
+            <div class="weather-grid">
+                <div class="weather-item alert-moderate">
+                    <i class="ph ph-thermometer"></i>
+                    <span class="value">38°C</span>
+                    <span class="label">Heat</span>
+                </div>
+                <div class="weather-item alert-safe">
+                    <i class="ph ph-cloud-rain"></i>
+                    <span class="value">0mm</span>
+                    <span class="label">Rain</span>
+                </div>
+                <div class="weather-item alert-critical">
+                    <i class="ph ph-wind"></i>
+                    <span class="value">310</span>
+                    <span class="label">AQI (Poor)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <a href="alert.html" class="btn btn-secondary">View Alerts</a>
+            <a href="history.html" class="btn btn-secondary">Payout History</a>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active"><i class="ph ph-house"></i> Home</a>
+        <a href="subscribe.html" class="nav-item"><i class="ph ph-shield-check"></i> Plan</a>
+        <a href="history.html" class="nav-item"><i class="ph ph-wallet"></i> Wallet</a>
+    </nav>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+
+    <div id="profile-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Worker Profile</h2>
+                <button class="close-btn" id="close-modal"><i class="ph ph-x"></i></button>
+            </div>
+            
+            <div class="profile-details">
+                <div class="profile-avatar">
+                    <i class="ph-fill ph-user-circle"></i>
+                </div>
+                <h3>Rahul Kumar</h3>
+                <p class="worker-id">ID: W_1001</p>
+            </div>
+
+            <div class="profile-info-list">
+                <div class="info-row">
+                    <span class="info-label">Phone</span>
+                    <span class="info-value">+91 98765 43210</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Linked UPI</span>
+                    <span class="info-value">rahul.del@upi</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Vehicle</span>
+                    <span class="info-value">Motorcycle (DL-1S-XXXX)</span>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary log-out-btn">Log Out</button>
+        </div>
+    </div>
+</body>
+</html>
