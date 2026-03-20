@@ -1,5 +1,5 @@
 // frontend/js/api.js
-const API_BASE_URL = 'http://localhost:3000/api'; // placemnent of the dummy data api link!
+const API_BASE_URL = 'https://fika-climate-insurance-1.onrender.com/'; // placemnent of the dummy data api link!
 
 const fikaAPI = {
     // Fetch dashboard stats
