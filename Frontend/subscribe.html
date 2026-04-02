@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIKA Subscription</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <header class="app-header">
+         <div class="logo"> <img src="assets/images/black.svg" alt="FIKA"></div>
+        <div class="user-profile"><i class="ph ph-user-circle"></i></div>
+    </header>
+
+    <main class="container">
+        <div class="page-title">
+            <h1>Protect Your Earnings</h1>
+            <p>Subscribe to get automatic payouts when the weather stops you from working.</p>
+        </div>
+
+        <section class="card pricing-card">
+            <div class="plan-header">
+                <h2>Weekly Protection Plan</h2>
+                <div class="price">₹40<span>/week</span></div>
+            </div>
+            
+            <ul class="benefits-list">
+                <li><i class="ph-fill ph-check-circle"></i> Automatic payouts to UPI</li>
+                <li><i class="ph-fill ph-check-circle"></i> Coverage for Heavy Rain (>30mm)</li>
+                <li><i class="ph-fill ph-check-circle"></i> Coverage for Extreme Heat (>40°C)</li>
+                <li><i class="ph-fill ph-check-circle"></i> Coverage for Severe AQI (>300)</li>
+                <li><i class="ph-fill ph-check-circle"></i> No paperwork or claim filing</li>
+            </ul>
+
+            <button class="btn btn-primary" id="subscribe-btn" onclick="handleSubscribe()">
+                Pay ₹40 via UPI
+            </button>
+            <p class="terms">Auto-renews weekly. Cancel anytime.</p>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item"><i class="ph ph-house"></i> Home</a>
+        <a href="subscribe.html" class="nav-item active"><i class="ph-fill ph-shield-check"></i> Plan</a>
+        <a href="history.html" class="nav-item"><i class="ph ph-wallet"></i> Wallet</a>
+    </nav>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+
+    <div id="profile-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Worker Profile</h2>
+                <button class="close-btn" id="close-modal"><i class="ph ph-x"></i></button>
+            </div>
+            
+            <div class="profile-details">
+                <div class="profile-avatar">
+                    <i class="ph-fill ph-user-circle"></i>
+                </div>
+                <h3>Rahul Kumar</h3>
+                <p class="worker-id">ID: W_1001</p>
+            </div>
+
+            <div class="profile-info-list">
+                <div class="info-row">
+                    <span class="info-label">Phone</span>
+                    <span class="info-value">+91 98765 43210</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Linked UPI</span>
+                    <span class="info-value">rahul.del@upi</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Vehicle</span>
+                    <span class="info-value">Motorcycle (DL-1S-XXXX)</span>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary log-out-btn">Log Out</button>
+        </div>
+    </div>
+</body>
+</html>

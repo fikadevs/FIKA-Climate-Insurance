@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIKA - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+    <main class="login-container">
+        <div class="login-header">
+            <h1 class="logo-large">FIKA.</h1>
+            <p>Climate Protection for Gig Workers</p>
+        </div>
+
+        <div class="card login-card" id="login-step-phone">
+            <h2>Welcome Back</h2>
+            <div class="input-group">
+                <span class="country-code">+91</span>
+                <input type="tel" id="login-phone" class="form-control" placeholder="Mobile Number" maxlength="10">
+            </div>
+            <button class="btn btn-primary" onclick="showLoginOTP()">Send OTP</button>
+            <p style="text-align:center; margin-top:15px; font-size:0.9rem;">
+                New to FIKA? <a href="register.html" style="color:var(--primary); font-weight:bold;">Register Now</a>
+            </p>
+        </div>
+
+        <div class="card login-card hidden" id="login-step-otp">
+            <h2>Verify Phone</h2>
+            <p class="login-subtitle">Enter the 4-digit code sent to your phone.</p>
+            <div class="otp-group">
+                <input type="number" class="otp-input" maxlength="1"><input type="number" class="otp-input" maxlength="1">
+                <input type="number" class="otp-input" maxlength="1"><input type="number" class="otp-input" maxlength="1">
+            </div>
+            <button class="btn btn-primary" onclick="verifyLogin()">Login to Dashboard</button>
+        </div>
+    </main>
+    <script src="js/app.js"></script>
+    
+</body>
+</html>
