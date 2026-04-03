@@ -19,6 +19,14 @@ const Worker = sequelize.define("Worker", {
     type: DataTypes.STRING,
     allowNull: true,            // Allows it to be empty if they don't have one yet
   },
+  vehicle_type: {               // <--- ADD THIS BUCKET
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  is_active: {                  // <--- ADD THIS BUCKET
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
   weeklyIncome: {
     type: DataTypes.FLOAT,
     defaultValue: 0,

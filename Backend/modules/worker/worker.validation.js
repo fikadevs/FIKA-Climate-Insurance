@@ -14,7 +14,9 @@ const createWorkerSchema = Joi.object({
   weeklyIncome: Joi.number().min(0).required(),
 
   zone: Joi.string().valid("A", "B", "C").required(),
-  upi_id: Joi.string().optional()
+  upi_id: Joi.string().optional(),
+  vehicle_type: Joi.string().optional(),  // <--- ADD THIS
+  is_active: Joi.boolean().optional()
 });
 
 // Update Worker Validation (optional fields)
@@ -26,7 +28,9 @@ const updateWorkerSchema = Joi.object({
   weeklyIncome: Joi.number().min(0),
 
   zone: Joi.string().valid("A", "B", "C"),
-  upi_id: Joi.string().optional()
+  upi_id: Joi.string().optional(),
+  vehicle_type: Joi.string().optional(),  // <--- ADD THIS
+  is_active: Joi.boolean().optional()
 });
 
 // Validate function (middleware style)
