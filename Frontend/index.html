@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIKA Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <section class="card">
-    <h2>Live Delivery Zone Risk Map</h2>
-    <div id="risk-map" style="height: 200px; width: 100%; border-radius: 12px; margin-bottom: 15px; z-index: 1;"></div>
-    <p id="map-status" style="font-size: 0.85rem; color: #64748B;">Detecting your location...</p>
-</section>
 </head>
 <body>
     <header class="app-header">
@@ -31,22 +28,28 @@
             <p>You are protected against extreme rain, heat, and AQI today.</p>
         </section>
 
+        <section class="card">
+            <h2>Live Delivery Zone Risk Map</h2>
+            <div id="risk-map" style="height: 200px; width: 100%; border-radius: 12px; margin-bottom: 15px; z-index: 1;"></div>
+            <p id="map-status" style="font-size: 0.85rem; color: #64748B;">Detecting your location...</p>
+        </section>
+
         <section class="card weather-card">
             <h2>Live Environment Risk</h2>
             <div class="weather-grid">
                 <div class="weather-item alert-moderate">
                     <i class="ph ph-thermometer"></i>
-                    <span class="value">38°C</span>
+                    <span class="value" id="val-temp">--°C</span>
                     <span class="label">Heat</span>
                 </div>
                 <div class="weather-item alert-safe">
                     <i class="ph ph-cloud-rain"></i>
-                    <span class="value">0mm</span>
+                    <span class="value" id="val-rain">--mm</span>
                     <span class="label">Rain</span>
                 </div>
                 <div class="weather-item alert-critical">
                     <i class="ph ph-wind"></i>
-                    <span class="value">310</span>
+                    <span class="value" id="val-aqi">---</span>
                     <span class="label">AQI (Poor)</span>
                 </div>
             </div>
@@ -63,10 +66,6 @@
         <a href="subscribe.html" class="nav-item"><i class="ph ph-shield-check"></i> Plan</a>
         <a href="history.html" class="nav-item"><i class="ph ph-wallet"></i> Wallet</a>
     </nav>
-
-    <script src="js/api.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/app.js"></script>
 
     <div id="profile-modal" class="modal-overlay hidden">
         <div class="modal-content">
@@ -98,8 +97,12 @@
                 </div>
             </div>
 
-            <button class="btn btn-secondary log-out-btn">Log Out</button>
+            <button class="btn btn-logout" onclick="logoutWorker()">Log Out</button>
         </div>
     </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
