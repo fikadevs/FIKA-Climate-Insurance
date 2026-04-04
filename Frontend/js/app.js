@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (path.includes('index.html') || path === '/' || path.endsWith('Frontend/')) {
         try {
             // GET data from the cloud database via your API
-            const response = await fetch(`http://localhost:5000/api/workers/${currentWorkerId}`);
+            const response = await fetch(`https://fika-climate-insurance-4.onrender.com/api/workers`);
             
             if (response.ok) {
                 const workerData = await response.json();
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         initRealTimeDashboard();
     }
 
-}); // <--- CRITICAL FIX: The DOMContentLoaded block closes HERE!
+});
 
 // ==========================================
 // GLOBAL FUNCTIONS (Accessible by HTML Buttons)
@@ -157,12 +157,13 @@ async function submitRegistrationToDB() {
         upi_id: document.getElementById('reg-upi').value,
         vehicle_type: document.getElementById('reg-vehicle').value,
         is_active: true,
-        weeklyIncome: 3000, // (Or however you fixed the last one)
-        zone: document.getElementById('reg-zone').value // <--- ADD THIS!
+        weeklyIncome: 3000, 
+        zone: document.getElementById('reg-zone').value 
     };
 
     try {
-        const response = await fetch('http://localhost:5000/api/workers', {
+        // Fixed the broken fetch URL here!
+        const response = await fetch('https://fika-climate-insurance-4.onrender.com/api/workers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(workerData)
@@ -228,8 +229,8 @@ async function fetchLiveWeather(lat, lon) {
     document.getElementById('map-status').innerText = "Fetching live weather from secure server...";
 
     try {
-        // Call YOUR backend now, not OpenWeather directly!
-        const response = await fetch(`http://localhost:5000/api/weather?lat=${lat}&lon=${lon}`);
+        // Updated to use the live Render URL
+        const response = await fetch(`https://fika-climate-insurance-4.onrender.com/api/weather?lat=${lat}&lon=${lon}`);
         const data = await response.json();
 
         // Parse the bundled Data
@@ -265,91 +266,52 @@ function logoutWorker() {
     localStorage.removeItem('current_worker_id');
     
     // 2. Send them back to the login/registration page
-    // (Change 'login.html' to whatever your starting page is named)
     window.location.href = "login.html"; 
 }
 
 // --- DYNAMIC PRICING & ALERTS LOGIC ---
 
 async function loadAlertsDashboard() {
+    const currentWorkerId = localStorage.getItem('current_worker_id') || 'W_1001';
 
-const currentWorkerId = localStorage.getItem('current_worker_id') || 'W_1001';
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
 
+            try {
+                // Updated to use the live Render URL
+                const response = await fetch(`https://fika-climate-insurance-4.onrender.com/api/workers/${currentWorkerId}/alerts?lat=${lat}&lon=${lon}`);
+                if (!response.ok) return;
 
-if (navigator.geolocation) {
+                const data = await response.json();
 
-navigator.geolocation.getCurrentPosition(async (position) => {
+                // Update the UI
+                document.getElementById('alert-city').innerText = data.cityName;
+                document.getElementById('streak-count').innerText = `${data.currentStreak} / 10 Weeks`;
+                document.getElementById('weather-risk').innerText = data.riskLevel;
+                document.getElementById('safe-discount').innerText = `- ₹${data.discount}`;
 
-const lat = position.coords.latitude;
+                // Animate Progress Bar (Max 10 weeks)
+                const percentage = Math.min((data.currentStreak / 10) * 100, 100);
+                document.getElementById('streak-bar').style.width = `${percentage}%`;
 
-const lon = position.coords.longitude;
+                const priceEl = document.getElementById('final-premium');
+                if (data.isFreeWeek) {
+                    priceEl.innerText = "₹0 (FREE WEEK!)";
+                    priceEl.style.color = "#10B981";
+                } else {
+                    priceEl.innerText = `₹${data.finalPremium}`;
+                }
 
-
-try {
-
-// Fetch the algorithm data from your backend
-
-const response = await fetch(`http://localhost:5000/api/workers/${currentWorkerId}/alerts?lat=${lat}&lon=${lon}`);
-
-if (!response.ok) return;
-
-
-const data = await response.json();
-
-
-// Update the UI
-
-document.getElementById('alert-city').innerText = data.cityName;
-
-document.getElementById('streak-count').innerText = `${data.currentStreak} / 10 Weeks`;
-
-document.getElementById('weather-risk').innerText = data.riskLevel;
-
-document.getElementById('safe-discount').innerText = `- ₹${data.discount}`;
-
-
-// Animate Progress Bar (Max 10 weeks)
-
-const percentage = Math.min((data.currentStreak / 10) * 100, 100);
-
-document.getElementById('streak-bar').style.width = `${percentage}%`;
-
-
-
-const priceEl = document.getElementById('final-premium');
-
-if (data.isFreeWeek) {
-
-priceEl.innerText = "₹0 (FREE WEEK!)";
-
-priceEl.style.color = "#10B981";
-
-} else {
-
-priceEl.innerText = `₹${data.finalPremium}`;
-
+            } catch (err) {
+                console.error("Failed to load alerts", err);
+            }
+        });
+    }
 }
-
-
-
-} catch (err) {
-
-console.error("Failed to load alerts", err);
-
-}
-
-});
-
-}
-
-}
-
-
 
 // Trigger this function ONLY if we are on the alerts page
-
 if (window.location.pathname.includes('alert.html')) {
-
-loadAlertsDashboard();
-
+    loadAlertsDashboard();
 }

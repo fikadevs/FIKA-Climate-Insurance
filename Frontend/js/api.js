@@ -1,5 +1,6 @@
 // Frontend/js/api.js
-const API_BASE_URL = 'https://fika-climate-insurance-4.onrender.com/'; // MUST MATCH YOUR BACKEND PORT
+// Added /api to the end and removed the trailing slash!
+const API_BASE_URL = 'https://fika-climate-insurance-4.onrender.com/api'; 
 
 const fikaAPI = {
     getWorkerData: async (workerId) => {
@@ -8,7 +9,7 @@ const fikaAPI = {
             const response = await fetch(`${API_BASE_URL}/workers/${workerId}`);
             if (!response.ok) throw new Error(`Backend returned ${response.status}`);
             const data = await response.json();
-            console.log("Backend Worker Data:", data); // Check your browser console!
+            console.log("Backend Worker Data:", data); 
             return data;
         } catch (error) {
             console.error("API Connection Failed (Worker):", error);
