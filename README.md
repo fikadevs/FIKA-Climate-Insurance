@@ -5,36 +5,18 @@
 ## 📌 Overview
 FIKA is a **parametric micro-insurance platform** designed for delivery workers that automatically compensates them when extreme environmental conditions affect their ability to work.
 
-### 🚧 Challenges Faced by Workers
-Delivery workers often lose income due to:
-- Heavy rainfall
-- Extreme heat
-- Dangerous air pollution
-- Flooding
-- Weather disruptions
-
-Traditional insurance involves:
-- Manual claims
-- Lengthy verification
-- Delayed payouts
-
-### ✅ How FIKA Solves This
-- ⚡ Automatic trigger-based payouts  
-- 🤖 AI-driven income estimation  
-- 📄 No paperwork or claims  
+### 🚀 What's New in Phase 2
+For the second phase of development, we implemented our core AI logic and automated backend systems to create a truly zero-touch experience:
+* **🧠 AI-Driven Dynamic Pricing:** Weekly premiums adjust automatically based on hyper-local weather risk forecasts and a "No Claim Bonus" behavior model.
+* **⚙️ Zero-Touch Claims:** Integrated background Cron Jobs that monitor public APIs and automatically disburse funds to linked UPI IDs—no claim buttons, no paperwork.
+* **📊 Interactive Alerts Dashboard:** A live worker dashboard tracking their safe streak, current environmental risk, and real-time premium calculations.
 
 ---
 
 ## ❗ Problem Statement
-Gig economy delivery workers face **income instability** during environmental disruptions.
+Gig economy delivery workers face **income instability** during environmental disruptions. Traditional insurance involves manual claims, lengthy verification, and delayed payouts, leaving workers vulnerable.
 
-### Key Issues:
-1. No protection from weather disruptions  
-2. Loss of earnings during floods, heatwaves, or pollution  
-3. Complex insurance claim processes  
-4. Lack of affordable insurance options  
-
-👉 **Result:** Workers face financial uncertainty every week  
+👉 **Result:** Workers face financial uncertainty every week.
 
 ---
 
@@ -42,335 +24,69 @@ Gig economy delivery workers face **income instability** during environmental di
 FIKA introduces a **parametric insurance model** that automatically compensates workers when predefined environmental triggers occur.
 
 ### 🔑 Key Principles
-- No claim filing  
-- Automatic payout  
-- AI-driven fair compensation  
-- Affordable weekly premiums  
-
-### 📡 System Monitors:
-- Rainfall  
-- Temperature  
-- AQI  
-
-➡️ When thresholds are exceeded → **Automatic payout is triggered**
+- **No claim filing:** Completely automated, seamless UX.
+- **Dynamic Pricing:** Fair, AI-adjusted weekly premiums.
+- **Instant Liquidity:** Direct-to-UPI payouts via automated triggers.
 
 ---
 
-## 🚀 Core Features
+## 🚀 Core Features & Technical Implementation
 
-### 1. 🌧️ Weather-Triggered Automatic Payouts
-When thresholds cross:
-- Rainfall > threshold  
-- Temperature > safe limit  
-- AQI > dangerous level  
+### 1. 🌦️ Automated API Triggers (Zero-Touch Claims)
+We utilize the **OpenWeatherMap API** to monitor hyper-local zones. Background Cron Jobs check conditions hourly. If a threshold is crossed, a payout is automatically pushed to the worker's wallet/UPI.
+* **Trigger 1 (Heavy Rainfall):** Precipitation > 15mm/hr in the worker's registered zone.
+* **Trigger 2 (Extreme Heat):** Temperatures > 40°C.
+* **Trigger 3 (Severe Air Quality):** AQI > 300 (Smog/Pollution alerts).
 
-✅ System triggers payout automatically  
+### 2. 📉 Dynamic Pricing Model (Machine Learning/Heuristics)
+Premiums are calculated dynamically every week to ensure fairness and incentivize safe working habits:
+* **Hyper-Local Risk Assessment:** If predictive weather modeling forecasts heavy rain or storms for a specific zone, the base premium temporarily increases to cover the higher risk of payout.
+* **"No Claim Bonus" Streak:** The algorithm rewards workers who operate safely. For every consecutive week without a payout trigger, the premium drops by ₹2. 
+* **Free Coverage Reward:** Hitting a 10-week safe streak automatically drops the premium to ₹0 for the following week, maximizing user retention.
 
-**Benefits:**
-- No paperwork  
-- No verification delay  
-- Payout within 24–48 hours  
+### 3. 🛡️ Robust Fraud Prevention Architecture
+* **Location Verification:** Cross-referencing registered zones with API weather data.
+* **Device Fingerprinting:** Detects multiple accounts per device or device switching.
+* **Fraud Ring Detection:** Identifies clustered fake activity and matching timing patterns.
 
----
-
-### 2. 🤖 AI-Based Income Loss Estimator
-AI calculates expected income using:
-- Last 8–12 weeks earnings  
-- Working hours  
-- Demand patterns  
-
-**Example:**
-- Normal income: ₹6000  
-- Disruption income: ₹3000  
-
-➡️ System compensates the gap  
+| AI Risk Score | Action        |
+|--------------|-------------|
+| 0.0          | Safe (Auto Payout) |
+| 1.0          | Fraud (Review) |
 
 ---
 
-### 3. 📍 Hyperlocal Risk Zoning
-
-| Zone | Rainfall |
-|------|--------|
-| A    | 95mm   |
-| B    | 25mm   |
-
-Only affected zones receive payouts  
-
-**Benefits:**
-- Accurate payouts  
-- Reduced fraud  
-- Lower cost  
-
----
-
-### 4. 🛡️ AI Fraud Detection System
-Detects:
-- Fake GPS  
-- Multiple accounts  
-- Abnormal patterns  
-- Intentional inactivity  
-
----
-
-## 👤 Persona-Based Scenario
-
-### Rahul – Delivery Rider
-- Age: 27  
-- Weekly Income: ₹6000  
-
-### 📉 Situation
-Heavy rainfall reduces work → earns ₹3000  
-
-### ⚙️ System Response
-1. Weather trigger activated  
-2. Zone verified  
-3. AI calculates average income  
-4. Compensation calculated  
-5. Auto payout sent  
-
-✅ Rahul receives compensation **without any claim**
-
----
-
-## 🔄 Application Workflow
-
-### Step 1 – Registration
-- Phone number  
-- Platform details  
-- UPI / Bank  
-
-### Step 2 – Subscription
-- ₹30–₹50 per week  
-- Auto UPI payment  
-
-### Step 3 – Monitoring
-System tracks:
-- Weather  
-- AQI  
-- Disaster alerts  
-
-### Step 4 – Trigger Detection
-Example:  
-Rainfall > 80mm → Trigger activated  
-
-### Step 5 – Worker Verification
-- GPS  
-- Zone  
-- Activity  
-
-### Step 6 – AI Calculation
-- Income estimation  
-- Disruption analysis  
-
-### Step 7 – Payout
-💸 Transferred within 24–48 hours  
-
----
-
-## 💰 Weekly Premium Model
-
-**Example:**
-- 100,000 workers  
-- ₹40/week  
-
-👉 Total Pool: ₹40,00,000  
-
-### Distribution
-
-| Category    | %   |
-|------------|-----|
-| Payouts     | 65% |
-| Insurance   | 15% |
-| Operations  | 10% |
-| Platform    | 10% |
-
----
-
-## 🧠 AI/ML Integration
-- Income Prediction  
-- Fraud Detection  
-- Risk Forecasting  
-
----
-
-## 🔮 AI Risk Prediction Model (Advanced)
-
-FIKA doesn’t just react — it **predicts risks**.
-
-**Example:**
-- 80% chance of heavy rain tomorrow  
-
-### System Actions:
-- Alerts workers  
-- Prepares payout  
-- Updates risk score  
-
----
-
-## 🛠️ Technology Stack
-
-### Frontend
-- React Native / Flutter  
-- Next.js  
-
-### Backend
-- Node.js / FastAPI  
-
-### Database
-- PostgreSQL  
-
-### AI/ML
-- Python  
-- Scikit-learn  
-- TensorFlow  
-
-### APIs
-- Weather API  
-- AQI API  
-- Maps API  
-
-### Payments
-- Razorpay / UPI  
-
-### Cloud
-- AWS / GCP  
-
----
-
-## 🏗️ System Architecture
-
-
----
-
-## 📅 Development Plan
-
-### Week 1
-- Research  
-- Architecture  
-- UI Prototype  
-
-### Week 2
-- Trigger system  
-- Subscription  
-- AI prototype  
-
----
-
-## 🔐 Adversarial Defense & Anti-Spoofing Strategy
-
-### 🚨 Problem
-Fraudsters exploit:
-- Fake GPS  
-- Multiple accounts  
-- Coordinated attacks  
-
-👉 Result: Massive fake payouts  
-
----
-
-### 🛡️ Defense System
-
-#### 1. Multi-Signal Location Verification
-- GPS  
-- IP location  
-- Cell tower  
-- Device sensors  
-
-➡️ Mismatch = Suspicious  
-
----
-
-#### 2. Behavioral Analysis
-Tracks:
-- Work hours  
-- Movement  
-- Patterns  
-
-➡️ Sudden abnormal change = Flagged  
-
----
-
-#### 3. Activity Cross-Validation
-- Claimed work vs actual activity  
-
----
-
-#### 4. Device Fingerprinting
-Detects:
-- Multiple accounts per device  
-- Device switching  
-
----
-
-#### 5. Fraud Ring Detection
-Identifies:
-- Clustered fake activity  
-- Same timing patterns  
-
----
-
-#### 6. AI Fraud Risk Score
-
-| Score | Meaning |
-|------|--------|
-| 0.0  | Safe   |
-| 1.0  | Fraud  |
-
----
-
-#### 7. Fairness System
-
-| Risk Level | Action        |
-|-----------|-------------|
-| Low       | Full payout  |
-| Medium    | Partial payout |
-| High      | Review       |
-
----
-
-#### 8. Secure Payout Control
-Before payout:
-- Location verified  
-- Behavior validated  
-- Risk score checked  
-
----
-
-### 💪 Why This is Powerful
-- Prevents fake GPS fraud  
-- Detects coordinated attacks  
-- Protects insurance pool  
-- Ensures fairness  
+## 💻 Tech Stack
+
+* **Frontend:** HTML5, CSS3, Vanilla JavaScript (DOM Manipulation, Fetch API).
+* **Backend:** Node.js, Express.js.
+* **Database:** PostgreSQL with Sequelize ORM.
+* **Validation & Security:** Joi (Schema Validation), CORS.
+* **External APIs:** OpenWeatherMap API.
+* **Automation:** Node Cron (for background weather polling and payouts).
 
 ---
 
 ## 🔮 Future Scope
-- Health insurance  
-- Accident coverage  
-- Platform integrations  
-- Global scaling  
+- Predictive Machine Learning models trained on historical payout data.
+- Expansion to cover personal health and accident coverage.
+- Deep platform integrations with food delivery apps (Zomato/Swiggy).
+- Global scaling across emerging markets.
 
 ---
 
 ## 📂 Repository Structure
+```text
 FIKA/
 │── README.md
 │── docs/
-│── backend/
-│── frontend/
-│── ml_models/
-│── prototype/
-
-
----
-
-## 🎥 Demo Video
-📌 *FIKA: Automated Climate Risk Insurance for Delivery Workers | Guidewire Hackathon 2026*
-(https://www.youtube.com/watch?v=XmlRZOXNtm0)
-
----
-
-## 🏁 Conclusion
-FIKA is not just an insurance platform.
-
-It is a **secure, AI-powered financial protection system** built for the future of the gig economy.
+│── Backend/
+│   ├── controllers/
+│   ├── models/ (Sequelize DB Models)
+│   ├── routes/
+│   ├── services/
+│   └── server.js
+│── Frontend/
+│   ├── css/
+│   ├── js/
+│   └── alert.html, register.html, index.html

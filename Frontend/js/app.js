@@ -268,3 +268,88 @@ function logoutWorker() {
     // (Change 'login.html' to whatever your starting page is named)
     window.location.href = "login.html"; 
 }
+
+// --- DYNAMIC PRICING & ALERTS LOGIC ---
+
+async function loadAlertsDashboard() {
+
+const currentWorkerId = localStorage.getItem('current_worker_id') || 'W_1001';
+
+
+if (navigator.geolocation) {
+
+navigator.geolocation.getCurrentPosition(async (position) => {
+
+const lat = position.coords.latitude;
+
+const lon = position.coords.longitude;
+
+
+try {
+
+// Fetch the algorithm data from your backend
+
+const response = await fetch(`http://localhost:5000/api/workers/${currentWorkerId}/alerts?lat=${lat}&lon=${lon}`);
+
+if (!response.ok) return;
+
+
+const data = await response.json();
+
+
+// Update the UI
+
+document.getElementById('alert-city').innerText = data.cityName;
+
+document.getElementById('streak-count').innerText = `${data.currentStreak} / 10 Weeks`;
+
+document.getElementById('weather-risk').innerText = data.riskLevel;
+
+document.getElementById('safe-discount').innerText = `- ₹${data.discount}`;
+
+
+// Animate Progress Bar (Max 10 weeks)
+
+const percentage = Math.min((data.currentStreak / 10) * 100, 100);
+
+document.getElementById('streak-bar').style.width = `${percentage}%`;
+
+
+
+const priceEl = document.getElementById('final-premium');
+
+if (data.isFreeWeek) {
+
+priceEl.innerText = "₹0 (FREE WEEK!)";
+
+priceEl.style.color = "#10B981";
+
+} else {
+
+priceEl.innerText = `₹${data.finalPremium}`;
+
+}
+
+
+
+} catch (err) {
+
+console.error("Failed to load alerts", err);
+
+}
+
+});
+
+}
+
+}
+
+
+
+// Trigger this function ONLY if we are on the alerts page
+
+if (window.location.pathname.includes('alert.html')) {
+
+loadAlertsDashboard();
+
+}

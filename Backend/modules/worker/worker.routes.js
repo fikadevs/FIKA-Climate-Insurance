@@ -12,4 +12,7 @@ router.post("/", validate(createWorkerSchema), controller.createWorker);
 
 router.get("/", controller.getWorkers);
 
+// Changed workerController to controller!
+router.get("/:id/alerts", controller.getWorkerAlerts); 
+
 module.exports = router;

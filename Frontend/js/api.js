@@ -1,5 +1,5 @@
 // Frontend/js/api.js
-const API_BASE_URL = 'http://localhost:5000/api'; // MUST MATCH YOUR BACKEND PORT
+const API_BASE_URL = 'https://fika-climate-insurance-4.onrender.com/'; // MUST MATCH YOUR BACKEND PORT
 
 const fikaAPI = {
     getWorkerData: async (workerId) => {

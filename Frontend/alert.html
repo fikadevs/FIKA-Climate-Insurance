@@ -18,6 +18,35 @@
             <h1>Environment Alerts</h1>
             <p>Live tracking of weather and AQI conditions in your delivery zone.</p>
         </div>
+    <section class="card" id="pricing-dashboard" style="border: 2px solid #10B981;">
+            <h2>Dynamic Premium Status</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span>Safe Streak:</span>
+                <strong id="streak-count">Loading...</strong>
+            </div>
+            
+            <div style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 10px; margin-bottom: 15px;">
+                <div id="streak-bar" style="width: 0%; background: #10B981; height: 10px; border-radius: 8px; transition: width 1s;"></div>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">Weather Risk (<span id="alert-city">...</span>)</span>
+                <span class="info-value" id="weather-risk">Loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Base Premium</span>
+                <span class="info-value">₹50</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">No-Claim Discount</span>
+                <span class="info-value" style="color: #10B981;" id="safe-discount">- ₹0</span>
+            </div>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #CBD5E1;">
+            <div class="info-row">
+                <span class="info-label"><strong>Next Week's Premium</strong></span>
+                <span class="info-value"><strong id="final-premium" style="font-size: 1.2rem;">Loading...</strong></span>
+            </div>
+        </section>
 
         <section class="card active-alert" id="current-alert">
             <div class="alert-header">

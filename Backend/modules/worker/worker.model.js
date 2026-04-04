@@ -34,6 +34,15 @@ const Worker = sequelize.define("Worker", {
   zone: {
     type: DataTypes.STRING,
   },
+
+  safe_weeks: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0, 
+  },
+  base_premium: {
+    type: DataTypes.FLOAT,
+    defaultValue: 50.0, 
+  },
 });
 
 module.exports = Worker;
